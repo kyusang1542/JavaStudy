@@ -1,0 +1,29 @@
+package com.company2;
+
+import java.io.*;
+
+public class CharIOExam02 {
+    public static void main(String[] args) {
+        BufferedReader br = null;
+        PrintWriter pw = null;
+        try {
+            // 한줄씩 읽기 위해 BufferedReader를 사용
+            // File을 읽기위해 FileReader을 사용
+            br = new BufferedReader(new FileReader("src/com/company2/CharIOExam02.java"));
+            pw = new PrintWriter(new FileWriter("test.txt"));
+            String line = null;
+            while ((line = br.readLine())!=null){
+                pw.println(line);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            pw.close();
+            try {
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
